@@ -56,7 +56,7 @@ class User(AbstractUser):
     )
     currency = models.CharField(
         choices=CURRENCY_CHOICES,
-        max_length=3,
+        max_length=10,
         blank=True,
         default=CURRENCY_USD
     )
