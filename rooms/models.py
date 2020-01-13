@@ -1,4 +1,5 @@
 from django.db import models
+from core import models as core_models
 
-class Room(models.Model):
+class Room(core_models.TimeStampedModel):
     pass
