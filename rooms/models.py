@@ -14,6 +14,7 @@ class AbstractItem(core_models.TimeStampedModel):
 class RoomType(AbstractItem):
     class Meta:
         verbose_name='Room Type'
+        ordering = ['-created']
 
 class Amenity(AbstractItem):
     class Meta:
