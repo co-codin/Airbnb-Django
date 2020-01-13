@@ -5,4 +5,20 @@ from .models import User
 
 @admin.register(User)
 class CustomUserAdmin(admin.ModelAdmin):
-    pass
+    """ Custom User Admin """
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "language",
+        "currency",
+        "superhost",
+        "is_staff",
+        "is_superuser",
+        "email_verified",
+        "email_secret",
+        "login_method",
+    )
+    list_filter = ("superhost", "language", "currency")
