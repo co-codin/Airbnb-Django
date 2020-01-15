@@ -22,8 +22,22 @@ class RoomAdmin(admin.ModelAdmin):
     )
     list_filter = (
         "instant_book",
+        "host__superhost",
+        "room_type",
+        "amenities",
+        "facilities",
+        "house_rules",
         "city",
         "country"
+    )
+
+    search_fields = (
+        "=city",
+        "^host__username"
+    )
+
+    filter_horizontal = (
+        "amenities", "facilities", "house_rules"
     )
 
 @admin.register(models.Photo)
