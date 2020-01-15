@@ -3,7 +3,11 @@ from . import models
 
 @admin.register(models.RoomType, models.Facility, models.Amenity, models.HouseRule)
 class ItemAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
+
 
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
@@ -48,6 +52,7 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",
         "count_photos",
+        "total_rating"
     )
     list_filter = (
         "instant_book",
