@@ -7,10 +7,11 @@ class Conversation(core_models.TimeStampedModel):
     )
 
     def __str__(self):
-        usernames = []
-        for user in self.participants.all():
-            usernames.append(user.username)
-        return ", ".join(usernames)
+        return str(self.created)
+        # usernames = []
+        # for user in self.participants.get():
+        #     usernames.append(user.username)
+        # return ", ".join(usernames)
 
 class Message(core_models.TimeStampedModel):
     message = models.TextField()

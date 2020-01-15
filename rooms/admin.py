@@ -7,7 +7,24 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        "name",
+        "country",
+        "city",
+        "price",
+        "guests",
+        "beds",
+        "bedrooms",
+        "baths",
+        "check_in",
+        "check_out",
+        "instant_book",
+    )
+    list_filter = (
+        "instant_book",
+        "city",
+        "country"
+    )
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
