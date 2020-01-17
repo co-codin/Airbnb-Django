@@ -12,7 +12,6 @@ class ItemAdmin(admin.ModelAdmin):
 class PhotoInline(admin.TabularInline):
     model = models.Photo
 
-
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
@@ -81,6 +80,10 @@ class RoomAdmin(admin.ModelAdmin):
     filter_horizontal = (
         "amenities", "facilities", "house_rules"
     )
+
+    def save_model(self, request, obj, form, change):
+        print(obj, change, form)
+        super().save_model(request, obj, form, change)
 
     def count_amenities(self, obj):
         return obj.amenities.count()
