@@ -1,5 +1,6 @@
 from django.views.generic import ListView
 from . import models
+from django.shortcuts import render
 
 
 class HomeView(ListView):
@@ -12,3 +13,7 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+def room_detail(request, pk):
+    print(pk)
+    return render(request, "rooms/detail.html")
