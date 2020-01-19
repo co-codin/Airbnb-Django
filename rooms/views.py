@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from . import models
 from django.http import Http404
 from django.urls import reverse
@@ -16,10 +16,13 @@ class HomeView(ListView):
         context = super().get_context_data(**kwargs)
         return context
 
-def room_detail(request, pk):
-    try:
-        room = models.Room.objects.get(pk=pk)
-        return render(request, "rooms/detail.html", {'room': room})
-    except:
-        raise Http404()
+class RoomDetail(DetailView):
+    model = models.Room
+
+# def room_detail(request, pk):
+#     try:
+#         room = models.Room.objects.get(pk=pk)
+#         return render(request, "rooms/room_detail.html", {'room': room})
+#     except  models.Room.DoesNotExist:
+#         raise Http404()
 
