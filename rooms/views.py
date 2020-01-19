@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from . import models
-from django.shortcuts import render
+from django.urls import reverse
+from django.shortcuts import render, redirect
 
 
 class HomeView(ListView):
@@ -15,5 +16,9 @@ class HomeView(ListView):
         return context
 
 def room_detail(request, pk):
-    print(pk)
-    return render(request, "rooms/detail.html")
+    try:
+        room = models.Room.objects.get(pk=pk)
+        return render(request, "rooms/detail.html", {'room': room})
+    except:
+        return redirect(reverse("core:home"))
+
