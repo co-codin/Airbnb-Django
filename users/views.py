@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import FormView
@@ -52,3 +53,9 @@ def complete_verification(request, key):
     except models.User.DoesNotExist:
         pass
     return redirect(reverse("core:home"))
+
+def github_login(request):
+    pass
+
+def github_callback(request):
+    pass
