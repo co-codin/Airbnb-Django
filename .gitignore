@@ -133,3 +133,4 @@ env/
 .idea/
 
 uploads/
+node_modules/
